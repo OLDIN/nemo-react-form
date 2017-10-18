@@ -7,6 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import 'material-grid/dist/css/material-grid.css';
 import './App.css';
+import Logo from './img/top-logo-hotel.svg';
 
 import MDSteppers from './mdsteppers';
 
@@ -36,6 +37,10 @@ render() {
       <Provider store={store}>
         <MuiThemeProvider muiTheme={getMuiTheme()}>
           <main>
+              <header className={"wrapper-header"}>
+                <img src={Logo} alt="покупка и бронирование билетов"/>
+                <h1>Покупка и бронирование билетов</h1>
+              </header>
             <section className={"content"}>
               <MDSteppers />
             </section>
