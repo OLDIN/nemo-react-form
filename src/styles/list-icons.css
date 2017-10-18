@@ -1,18 +1,3 @@
-html, body {
-  height: 100%; }
-
-.content {
-  max-width: 520px;
-  margin: 0 auto; }
-  .content form {
-    display: table; }
-
-.first-page {
-  max-width: 320px; }
-
-.select-step .avatar-bg {
-  background: #fff !important; }
-
 .item-icons {
   cursor: pointer; }
   .item-icons img {

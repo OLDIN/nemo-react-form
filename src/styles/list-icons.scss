@@ -1,0 +1,21 @@
+.item-icons{
+  cursor: pointer;
+
+  img{
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+  }
+  &:hover{
+    p{
+      color: rgb(255, 64, 129);
+      transition: all .3s ease-out;
+    }
+  }
+  p{
+    color: #000000;
+    text-align: center;
+    transition: all .3s ease-out;
+
+  }
+}

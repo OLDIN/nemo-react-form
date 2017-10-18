@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import FirstPage from './components/steps/first-page';
-import SecondPage from './components/steps/second-page';
-import ThirdPage from './components/steps/third-page';
+import FirstPage from './components/steps/data-step';
+import SecondPage from './components/steps/event-step';
+import ThirdPage from './components/steps/buy-step';
 
 
 

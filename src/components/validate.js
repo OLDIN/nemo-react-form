@@ -2,14 +2,14 @@ const validate = values => {
   const errors = {};
 
   if (!values.eventDate) {
-    errors.eventDate = 'Required';
+    errors.eventDate = 'Обязательно';
   }
 
   if (!values.firstName) {
-    errors.firstName = 'Required';
+    errors.firstName = 'Обязательно';
   }
   if (!values.lastName) {
-    errors.lastName = 'Required';
+    errors.lastName = 'Обязательно';
   }
   if (!values.email) {
     errors.email = 'Required';
@@ -17,10 +17,10 @@ const validate = values => {
     errors.email = 'Invalid email address';
   }
   if (!values.sex) {
-    errors.sex = 'Required';
+    errors.sex = 'Обязательно';
   }
   if (!values.favoriteColor) {
-    errors.favoriteColor = 'Required';
+    errors.favoriteColor = 'Обязательно';
   }
   return errors;
 };

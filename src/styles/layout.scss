@@ -1,0 +1,25 @@
+html, body{
+  height: 100%;
+}
+
+.header{
+
+}
+.content{
+  max-width: 520px;
+  margin: 0 auto;
+
+  form{
+    display: table;
+  }
+}
+
+.first-page{
+  max-width: 320px;
+}
+
+.select-step{
+  .avatar-bg{
+    background: #fff!important;
+  }
+}

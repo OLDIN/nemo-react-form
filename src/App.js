@@ -8,7 +8,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import 'material-grid/dist/css/material-grid.css';
 import './App.css';
 
-import Steppers from "./steppers";
+import MDSteppers from './mdsteppers';
 
 const reducer = combineReducers({
   form: reduxFormReducer // mounted under "form"
@@ -35,7 +35,11 @@ render() {
     return (
       <Provider store={store}>
         <MuiThemeProvider muiTheme={getMuiTheme()}>
-          <Steppers onSubmit={showResults}/>
+          <main>
+            <section className={"content"}>
+              <MDSteppers />
+            </section>
+          </main>
         </MuiThemeProvider>
       </Provider>
     );

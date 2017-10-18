@@ -1,52 +1,41 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Field, reduxForm } from 'redux-form';
 import { DatePicker } from 'redux-form-material-ui';
 import validate from '../validate';
-import renderField from '../../renderField';
 
+import RaisedButton from 'material-ui/RaisedButton';
 
 let DateTimeFormat = global.Intl.DateTimeFormat;
 
-const FirstPage = props => {
+const DataStep = props => {
   const { handleSubmit } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={"first-page"}>
       <Field
         name="eventDate"
         component={DatePicker}
         format={(value, name) => value === '' ? null : value}
         DateTimeFormat={DateTimeFormat}
         hintText="Выберите дату"
-        autoOk={true}
         cancelLabel={'Отмена'}
         locale="ru-RU"
       />
-      <Field
-        name="firstName"
-        type="text"
-        component={renderField}
-        label="First Name"
+      <RaisedButton
+        label="Далее"
+        disableFocusRipple={true}
+        primary={true}
+        onClick={props.handleSubmit}
+        style={{marginRight: 12}}
       />
-      <Field
-        name="firstName"
-        type="text"
-        component={renderField}
-        label="First Name"
-      />
-      <Field
-        name="lastName"
-        type="text"
-        component={renderField}
-        label="Last Name"
-      />
-      <div>
-        <button type="submit" className="next">
-          Next
-        </button>
-      </div>
     </form>
   )
+};
+
+DataStep.propTypes = {
+  handleSubmit: PropTypes.func
 };
 
 export default reduxForm({
@@ -54,4 +43,4 @@ export default reduxForm({
   destroyOnUnmount: false, // <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   validate
-})(FirstPage)
+})(DataStep)
