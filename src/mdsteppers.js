@@ -10,7 +10,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Badge from 'material-ui/Badge';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 
-import DataStep   from './components/steps/data-step'  ;
+import DataStep   from './components/steps/date-step'  ;
 import EventStep  from './components/steps/event-step' ;
 import ArenaStep  from './components/steps/arena-step' ;
 import ListStep   from './components/steps/list-step'  ;
