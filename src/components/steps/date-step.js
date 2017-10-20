@@ -7,6 +7,9 @@ import validate from '../validate';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
+
+import Seats from '../../seats';
+
 let DateTimeFormat = global.Intl.DateTimeFormat;
 
 const DataStep = props => {
@@ -23,6 +26,7 @@ const DataStep = props => {
         cancelLabel={'Отмена'}
         locale="ru-RU"
       />
+      <Seats />
       <RaisedButton
         label="Далее"
         disableFocusRipple={true}
