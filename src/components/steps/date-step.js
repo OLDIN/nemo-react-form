@@ -26,7 +26,7 @@ const DataStep = props => {
         cancelLabel={'Отмена'}
         locale="ru-RU"
       />
-      <Seats />
+
       <RaisedButton
         label="Далее"
         disableFocusRipple={true}
