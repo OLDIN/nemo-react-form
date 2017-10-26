@@ -2,21 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Field, reduxForm } from 'redux-form';
+import { SelectField } from 'redux-form-material-ui';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
-
-import {Grid, Cell} from 'material-grid/dist';
-import validate from '../validate';
-
 import MenuItem from 'material-ui/MenuItem';
-import { SelectField } from 'redux-form-material-ui';
 
-// import IconDiving from '../icons/diving.svg';
-// import IconDay from '../icons/day.svg';
-// import IconAquarium from '../icons/aquarium.svg';
-// import IconNight from '../icons/night.svg';
-// import IconSwimming from '../icons/swimming.svg';
+import Seats from '../../seats';
+import validate from '../validate';
 
 const ArenaStep = props => {
   const { handleSubmit } = props;
@@ -28,12 +21,9 @@ const ArenaStep = props => {
         <MenuItem value="2" primaryText="14:30 - 15:30"/>
         <MenuItem value="3" primaryText="16:30 - 17:30"/>
       </Field>
-      <Grid>
-        <Cell col={4} tablet={4} phone={2}>
-            <p>Романтическое ночное шоу</p>
-        </Cell>
 
-      </Grid>
+      <Seats />
+
       <RaisedButton
         label="Далее"
         disableFocusRipple={true}
