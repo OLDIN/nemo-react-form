@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { find } from 'lodash';
+
 import {
   Step,
   Stepper,
@@ -19,7 +23,7 @@ import BuyStep    from './components/steps/buy-step'   ;
 /**
  * A basic vertical non-linear implementation
  */
-class MDSteppers extends React.Component {
+class MDSteppers extends Component {
 
   constructor(props) {
     super(props);
@@ -33,21 +37,27 @@ class MDSteppers extends React.Component {
 
 
   handleNext() {
-    const {stepIndex} = this.state;
+    const { stepIndex } = this.state;
+    console.log('step index = ', stepIndex);
+    if (stepIndex === 1 && !this.isSelectedArena()) {
+      return this.setState({ stepIndex: 3 });
+    }
     if (stepIndex < 4) {
-      this.setState({stepIndex: stepIndex + 1});
+      this.setState({ stepIndex: stepIndex + 1 });
     }
   };
 
   handlePrev (){
-    const {stepIndex} = this.state;
+    const { stepIndex } = this.state;
+
     if (stepIndex > 0) {
-      this.setState({stepIndex: stepIndex - 1});
+      this.setState({ stepIndex: stepIndex - 1 });
     }
   };
 
 
   renderStepActions(step) {
+
     return (
       <div style={{margin: '12px 0'}}>
         {step !== 4 &&
@@ -89,8 +99,18 @@ class MDSteppers extends React.Component {
     );
   }
 
+  isSelectedArena() {
+    const event = find(this.props.events, e => {
+      return e.selected && e.events_global.gevent_group.isArena;
+    });
+    if (event)
+      return true;
+    else
+      return false;
+  }
+
   render() {
-    const {stepIndex} = this.state;
+    const { stepIndex } = this.state;
 
     return (
       <div className={"wrapper"}>
@@ -100,7 +120,7 @@ class MDSteppers extends React.Component {
           orientation="vertical"
         >
           <Step>
-            <StepButton onClick={() => this.setState({stepIndex: 0})}>
+            <StepButton onClick={() => this.setState({ stepIndex: 0 })}>
               Выберите дату:
             </StepButton>
             <StepContent>
@@ -109,7 +129,7 @@ class MDSteppers extends React.Component {
           </Step>
 
           <Step>
-            <StepButton onClick={() => this.setState({stepIndex: 1})}>
+            <StepButton onClick={() => this.setState({ stepIndex: 1 })}>
               Выберите мероприятие:
             </StepButton>
             <StepContent>
@@ -117,17 +137,19 @@ class MDSteppers extends React.Component {
             </StepContent>
           </Step>
 
-          <Step>
-            <StepButton onClick={() => this.setState({stepIndex: 2})}>
-              Шоу
-            </StepButton>
-            <StepContent>
-              <ArenaStep onSubmit={this.handleNext} handlePrev={this.handlePrev} />
-            </StepContent>
-          </Step>
+          { this.isSelectedArena() ?
+            <Step>
+              <StepButton onClick={() => this.setState({ stepIndex: 2 })}>
+                Шоу
+              </StepButton>
+              <StepContent>
+                <ArenaStep onSubmit={this.handleNext} handlePrev={this.handlePrev} />
+              </StepContent>
+            </Step> : <div></div>
+          }
 
           <Step>
-            <StepButton onClick={() => this.setState({stepIndex: 3})}>
+            <StepButton onClick={() => this.setState({ stepIndex: 3 })}>
               <Badge
                 badgeContent={1}
                 primary={true}
@@ -156,4 +178,14 @@ class MDSteppers extends React.Component {
   }
 }
 
-export default MDSteppers;
+MDSteppers.propTypes = {
+  events: PropTypes.array.isRequired
+};
+
+const mapStateToProps = state => {
+  return {
+    events: state.events
+  };
+}
+
+export default connect(mapStateToProps)(MDSteppers);

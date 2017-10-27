@@ -1,49 +1,100 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+
 import { SelectField } from 'redux-form-material-ui';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import MenuItem from 'material-ui/MenuItem';
 
+
+import moment from 'moment';
+
 import Seats from '../../seats';
 import validate from '../validate';
+import { find } from 'lodash';
 
-const ArenaStep = props => {
-  const { handleSubmit } = props;
+class ArenaStep extends Component {
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <Field name="time" component={SelectField} hintText="Выберите время">
-        <MenuItem value="1" primaryText="12:30 - 13:30"/>
-        <MenuItem value="2" primaryText="14:30 - 15:30"/>
-        <MenuItem value="3" primaryText="16:30 - 17:30"/>
-      </Field>
+  getEvents() {
+    const event = find(this.props.events, e => {
+      return e.selected && e.events_global.gevent_group.isArena;
+    });
 
-      <Seats />
+    if (!event) {
+      return [];
+    }
 
-      <RaisedButton
-        label="Далее"
-        disableFocusRipple={true}
-        primary={true}
-        onClick={props.handleSubmit}
-        style={{marginRight: 12}}
-      />
-      <FlatButton
-        label="Назад"
-        onClick={props.handlePrev}
-      />
+    return this.props.events.filter(e => {
+      return e.events_global.gevent_group.isArena && e.events_global.isNightShow === event.events_global.isNightShow
+    })
+  }
 
-    </form>
-  )
+  getListEventComponents() {
+    const events = this.getEvents();
+
+    if (events.length === 1) {
+      if (events[0].events_global.isNightShow) {
+        const dateStart = moment(events[0].date_start).format('HH:mm');
+        const dateEnd = moment(events[0].date_stop).format('HH:mm');
+        return <MenuItem value={events[0].id} primaryText={`${dateStart} - ${dateEnd}`}/>
+      }
+    }
+
+    return events.map(e => {
+      const dateStart = moment(e.date_start).format('HH:mm');
+      const dateEnd = moment(e.date_stop).format('HH:mm');
+      return <MenuItem value={e.id} key={e.id} primaryText={`${dateStart} - ${dateEnd}`}/>
+    })
+  }
+
+  render() {
+
+    const { handleSubmit, handlePrev } = this.props;
+
+    return (
+      <form onSubmit={handleSubmit}>
+        <Field name="time" component={SelectField} hintText="Выберите время">
+          {this.getListEventComponents()}
+        </Field>
+
+        <Seats />
+
+        <RaisedButton
+          label="Далее"
+          disableFocusRipple={true}
+          primary={true}
+          onClick={handleSubmit}
+          style={{marginRight: 12}}
+        />
+        <FlatButton
+          label="Назад"
+          onClick={handlePrev}
+        />
+
+      </form>
+    )
+  }
+
 };
 
 ArenaStep.propTypes = {
-  handleSubmit: PropTypes.func,
-  handlePrev: PropTypes.func
+  handleSubmit: PropTypes.func.isRequired,
+  handlePrev: PropTypes.func.isRequired,
+  events: PropTypes.array.isRequired
 };
+
+const mapStateToProps = state => {
+  return {
+    events: state.events
+  };
+}
+
+ArenaStep = connect(mapStateToProps)(ArenaStep);
+
 
 export default reduxForm({
   form: 'stepper', // <------ same form name
