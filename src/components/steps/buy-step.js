@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import validate from '../validate';
 
 import RaisedButton from 'material-ui/RaisedButton';

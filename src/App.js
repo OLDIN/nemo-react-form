@@ -10,9 +10,11 @@ import './App.css';
 import Logo from './img/top-logo-hotel.svg';
 
 import MDSteppers from './mdsteppers';
+import reducers from './reducers';
 
 const reducer = combineReducers({
-  form: reduxFormReducer // mounted under "form"
+  form: reduxFormReducer, // mounted under "form"
+  ...reducers
 });
 
 const store = (
@@ -21,14 +23,14 @@ const store = (
   : createStore)(reducer);
 
 
-const showResults = values =>
+/*const showResults = values =>
   new Promise(resolve => {
     setTimeout(() => {
       // simulate server latency
       window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`);
       resolve()
     }, 500);
-  });
+  });*/
 
 class App extends Component {
 
