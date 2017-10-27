@@ -56,7 +56,7 @@ class ArenaStep extends Component {
     const { handleSubmit, handlePrev } = this.props;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={"seats-form-wrapper"}>
         <Field name="time" component={SelectField} hintText="Выберите время">
           {this.getListEventComponents()}
         </Field>
