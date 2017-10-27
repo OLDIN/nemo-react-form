@@ -1,0 +1,61 @@
+.seats-wrapper{
+  display: flex;
+
+}
+.seats{
+  width: 80%;
+
+  p{
+    margin: 5px 0;
+  }
+  .seat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    margin: 2px;
+    border:1px solid #999999;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #006DB6;
+
+
+  }
+  .seat-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border:1px solid #999999;
+    margin: 2px;
+  }
+}
+
+.seats-row{
+  float: left;
+}
+
+.pool{
+  width: 40%;
+  margin-left: 10px;
+  border-radius: 50% 0 0 0;
+  background-color: #03A9F4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span{
+    transform: rotate(-90deg);
+    color: #ffffff;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  seats-wrapper{
+    transform: rotate(90deg);
+  }
+}
