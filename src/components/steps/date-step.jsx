@@ -7,13 +7,15 @@ import validate from '../validate';
 import { getEvents } from "../../services/api/events";
 import { setEvents } from '../../actions/events';
 
+import '../../seats';
+
 import RaisedButton from 'material-ui/RaisedButton';
 
 let DateTimeFormat = global.Intl.DateTimeFormat;
 
 console.log(process.env);
 
-class DataStep extends Component {
+class DateStep extends Component {
 
   constructor(props) {
     super(props);
@@ -25,14 +27,13 @@ class DataStep extends Component {
     /*
     * загрузка списка мероприятий
     */
-    const { store } = this.context;
 
     getEvents(date)
     .then(data => {
       if (data.error) {
         return console.error(data.msg);
       }
-      store.dispatch(setEvents(data.events));
+      this.props.dispatch(setEvents(data.events));
     })
     .catch(err => {
       console.log('err = ', err);
@@ -67,17 +68,14 @@ class DataStep extends Component {
   }
 }
 
-DataStep.propTypes = {
+DateStep.propTypes = {
   handleSubmit: PropTypes.func
 };
 
-DataStep.contextTypes = {
-  store: PropTypes.object,
-}
 
 export default reduxForm({
   form: 'stepper', // <------ same form name
   destroyOnUnmount: false, // <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   validate
-})(DataStep)
+})(DateStep)
