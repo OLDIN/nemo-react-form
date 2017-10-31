@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
-import { reducer as reduxFormReducer } from 'redux-form';
+
+import io from 'socket.io-client';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import 'material-grid/dist/css/material-grid.css';
+
 import './App.css';
 import Logo from './img/top-logo-hotel.svg';
 
 import MDSteppers from './mdsteppers';
-import reducers from './reducers';
+import configureStore from './configureStore.dev';
 
-const reducer = combineReducers({
-  form: reduxFormReducer, // mounted under "form"
-  ...reducers
+const initialState = window.REDUX_INITIAL_STATE || {};
+
+const store = configureStore(initialState);
+
+const socket = io(process.env.REACT_APP_SOCKET, {
+  forceNew: true
 });
 
-const store = (
-  window.devToolsExtension
-  ? window.devToolsExtension()(createStore)
-  : createStore)(reducer);
-
+socket.on('connection', () => {
+  console.log('Socket connection :)');
+})
 
 /*const showResults = values =>
   new Promise(resolve => {
@@ -34,23 +36,23 @@ const store = (
 
 class App extends Component {
 
-render() {
-    return (
-      <Provider store={store}>
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
-          <main>
-              <header className={"wrapper-header"}>
-                <img src={Logo} alt="покупка и бронирование билетов"/>
-                <h1>Покупка и бронирование билетов</h1>
-              </header>
-            <section className={"content"}>
-              <MDSteppers />
-            </section>
-          </main>
-        </MuiThemeProvider>
-      </Provider>
-    );
-  }
+  render() {
+      return (
+        <Provider store={store} socket={socket}>
+          <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <main>
+                <header className={"wrapper-header"}>
+                  <img src={Logo} alt="покупка и бронирование билетов"/>
+                  <h1>Покупка и бронирование билетов</h1>
+                </header>
+              <section className={"content"}>
+                <MDSteppers />
+              </section>
+            </main>
+          </MuiThemeProvider>
+        </Provider>
+      );
+    }
 }
 
 export default App;

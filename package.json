@@ -20,7 +20,10 @@
     "react-scripts": "^1.0.14",
     "redux": "^3.7.2",
     "redux-form": "^7.0.4",
-    "redux-form-material-ui": "^4.3.0"
+    "redux-form-material-ui": "^4.3.0",
+    "redux-thunk": "^2.2.0",
+    "socket.io": "^2.0.4",
+    "socket.io-client": "^2.0.4"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",

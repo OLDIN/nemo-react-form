@@ -23,8 +23,6 @@ import IconSwimming from '../icons/swimming.svg';
 
 import { selectEvent } from '../../actions/events';
 
-import '../../styles/events.css';
-
 class EventStep extends Component {
 
   constructor(props) {

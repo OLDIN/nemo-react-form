@@ -13,7 +13,7 @@ import MenuItem from 'material-ui/MenuItem';
 
 import moment from 'moment';
 
-import Seats from '../../seats';
+import Arena from '../Arena/Arena';
 import validate from '../validate';
 import { find } from 'lodash';
 
@@ -61,7 +61,7 @@ class ArenaStep extends Component {
           {this.getListEventComponents()}
         </Field>
 
-        <Seats />
+        <Arena />
 
         <RaisedButton
           label="Далее"
@@ -87,18 +87,17 @@ ArenaStep.propTypes = {
   events: PropTypes.array.isRequired
 };
 
+ArenaStep = reduxForm({
+  form: 'stepper', // <------ same form name
+  destroyOnUnmount: false, // <------ preserve form data
+  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
+  validate
+})(ArenaStep);
+
 const mapStateToProps = state => {
   return {
     events: state.events
   };
 }
 
-ArenaStep = connect(mapStateToProps)(ArenaStep);
-
-
-export default reduxForm({
-  form: 'stepper', // <------ same form name
-  destroyOnUnmount: false, // <------ preserve form data
-  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-  validate
-})(ArenaStep)
+export default connect(mapStateToProps)(ArenaStep);

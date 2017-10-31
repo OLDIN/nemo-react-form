@@ -7,13 +7,11 @@ import validate from '../validate';
 import { getEvents } from "../../services/api/events";
 import { setEvents } from '../../actions/events';
 
-import '../../seats';
+// import '../../seats';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
 let DateTimeFormat = global.Intl.DateTimeFormat;
-
-console.log(process.env);
 
 class DateStep extends Component {
 
