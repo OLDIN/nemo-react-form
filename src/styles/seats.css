@@ -87,5 +87,13 @@ g.sold path {
 g.sold text {
   fill: #000000; }
 
+g.reserved path {
+  fill: #6893c7; }
+
+g.reserved text {
+  fill: #FFFFFF; }
+
 svg g g g {
   cursor: pointer; }
+  svg g g g:hover > path {
+    fill: #dd24ff; }

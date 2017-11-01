@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import { find } from 'lodash';
 
 import {
@@ -20,6 +21,8 @@ import ArenaStep  from './components/steps/arena-step' ;
 import ListStep   from './components/steps/list-step'  ;
 import BuyStep    from './components/steps/buy-step'   ;
 
+import { pushEvent } from './actions/basket';
+
 /**
  * A basic vertical non-linear implementation
  */
@@ -30,6 +33,8 @@ class MDSteppers extends Component {
 
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
+    this.changeStep = this.changeStep.bind(this);
+
     this.state = {
       stepIndex: 0,
     };
@@ -38,26 +43,51 @@ class MDSteppers extends Component {
 
   handleNext() {
     const { stepIndex } = this.state;
-    console.log('step index = ', stepIndex);
+    const { events } = this.props;
+    // если выбрана не арена
     if (stepIndex === 1 && !this.isSelectedArena()) {
+      // ищем мероприятие
+      const event = find(events, { selected: true });
+
+      if (!event) {
+        return console.log('Мероприятие не было найдено. Попробуйте позже');
+      }
+      // заносим мероприятие в корзину
+      this.props.dispatch(pushEvent({
+        id: event.id,
+        dateStart: event.date_start,
+        isArena: event.events_global.gevent_group.isArena,
+        name: event.events_global.name,
+        price: event.price,
+        icon: event.events_global.onlinePaymentIcon
+      }));
+      // переходим к выводу корзины
       return this.setState({ stepIndex: 3 });
     }
     if (stepIndex < 4) {
       this.setState({ stepIndex: stepIndex + 1 });
     }
-  };
+  }
 
-  handlePrev (){
+  handlePrev () {
     const { stepIndex } = this.state;
 
     if (stepIndex > 0) {
       this.setState({ stepIndex: stepIndex - 1 });
     }
-  };
+  }
 
+  changeStep(stepIndex) {
+    const { events, basket } = this.props;
+    // если мероприятия не были загружены запрещаем переход по нажатию на шапку step'а
+    if (!events.length) return;
+    // если это переход в "оформить заказ" и не было выбрано для покупки ни одног омероприятия то запрещаем переход
+    if (stepIndex === 4 && !basket.length) return;
+    // переходим
+    this.setState({ stepIndex });
+  }
 
   renderStepActions(step) {
-
     return (
       <div style={{margin: '12px 0'}}>
         {step !== 4 &&
@@ -103,14 +133,13 @@ class MDSteppers extends Component {
     const event = find(this.props.events, e => {
       return e.selected && e.events_global.gevent_group.isArena;
     });
-    if (event)
-      return true;
-    else
-      return false;
+
+    return event ? true : false;
   }
 
   render() {
     const { stepIndex } = this.state;
+    const { basket } = this.props;
 
     return (
       <div className={"wrapper"}>
@@ -129,7 +158,7 @@ class MDSteppers extends Component {
           </Step>
 
           <Step>
-            <StepButton onClick={() => this.setState({ stepIndex: 1 })}>
+            <StepButton onClick={() => this.changeStep(1)}>
               Выберите мероприятие:
             </StepButton>
             <StepContent>
@@ -139,7 +168,7 @@ class MDSteppers extends Component {
 
           { this.isSelectedArena() ?
             <Step>
-              <StepButton onClick={() => this.setState({ stepIndex: 2 })}>
+              <StepButton onClick={() => this.changeStep(2)}>
                 Шоу
               </StepButton>
               <StepContent>
@@ -149,9 +178,9 @@ class MDSteppers extends Component {
           }
 
           <Step>
-            <StepButton onClick={() => this.setState({ stepIndex: 3 })}>
+            <StepButton onClick={() => this.changeStep(3)}>
               <Badge
-                badgeContent={1}
+                badgeContent={basket.length}
                 primary={true}
               >
                 <NotificationsIcon />
@@ -165,7 +194,7 @@ class MDSteppers extends Component {
           </Step>
 
           <Step>
-            <StepButton onClick={() => this.setState({stepIndex: 4})}>
+            <StepButton onClick={() => this.changeStep(4)}>
               Оформить заказ:
             </StepButton>
             <StepContent>
@@ -179,12 +208,14 @@ class MDSteppers extends Component {
 }
 
 MDSteppers.propTypes = {
-  events: PropTypes.array.isRequired
+  events: PropTypes.array.isRequired,
+  basket: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => {
   return {
-    events: state.events
+    events: state.events,
+    basket: state.basket
   };
 }
 

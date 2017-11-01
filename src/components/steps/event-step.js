@@ -45,7 +45,6 @@ class EventStep extends Component {
   }
 
   handleClick(e) {
-    console.log('e = ', e.currentTarget.dataset.id);
     this.props.dispatch(selectEvent(e.currentTarget.dataset.id));
   }
 
@@ -101,7 +100,7 @@ class EventStep extends Component {
                 >
                   <div className={cellClasses} onClick={this.handleClick} data-id={e.id}>
                     <img src={this.state.icons[e.events_global.onlinePaymentIcon]} alt={name}/>
-                    <p>{name}</p>
+                    <p>{name} - {e.price} грн.</p>
                   </div>
                 </Cell>
               )

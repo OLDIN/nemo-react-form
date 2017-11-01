@@ -1,10 +1,31 @@
 import React, { Component } from 'react';
-import seats from './seats.json';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { chain, zipObject } from 'lodash';
+
+import seatsList from './seats.json';
 import Seat from './Seat';
 
-class Seats extends Component {
+import { setSeats } from '../../actions/seats';
+
+class Arena extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.props.dispatch(setSeats(seatsList));
+  }
 
   render(){
+    const { seats } = this.props;
+
+    const rows = chain(seats)
+      .groupBy("row")
+      .toPairs()
+      .map(item => zipObject(["row", "seats"], item))
+      .value();
+
     return(
       <section className={"seats-wrapper"}>
         <svg version="1.1" className={"arena_svg"} xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
@@ -38,9 +59,9 @@ class Seats extends Component {
         c-1.7-1.8-3-4-4-6.8c-1.8-5-1.7-9.5,0.2-13.6C144.9,209.6,146.7,207.6,149.1,205.9z"/>
           <g>
             {
-              seats.map((row, rowI) => <g data-row={row.number} key={rowI}>
+              rows.map((row, rowI) => <g key={rowI}>
                 {
-                  row.seats.map((seat, seatI) => <Seat path={seat.path} text={seat.text} row={row.number} key={seatI}/>)
+                  row.seats.map((seat, seatI) => <Seat data={seat} key={seatI}/>)
                 }
               </g>)
             }
@@ -52,4 +73,14 @@ class Seats extends Component {
 
 }
 
-export default Seats;
+Arena.propTypes = {
+  seats: PropTypes.array.isRequired
+};
+
+const mapStateToProps = state => {
+  return {
+    seats: state.seats
+  };
+}
+
+export default connect(mapStateToProps)(Arena);

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import io from 'socket.io-client';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import 'material-grid/dist/css/material-grid.css';
@@ -13,17 +11,11 @@ import Logo from './img/top-logo-hotel.svg';
 import MDSteppers from './mdsteppers';
 import configureStore from './configureStore.dev';
 
+import Sockets from './services/sockets';
+
 const initialState = window.REDUX_INITIAL_STATE || {};
 
 const store = configureStore(initialState);
-
-const socket = io(process.env.REACT_APP_SOCKET, {
-  forceNew: true
-});
-
-socket.on('connection', () => {
-  console.log('Socket connection :)');
-})
 
 /*const showResults = values =>
   new Promise(resolve => {
@@ -36,9 +28,15 @@ socket.on('connection', () => {
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    // стартуем соккеты
+    this.sockets = new Sockets(store);
+  }
+
   render() {
       return (
-        <Provider store={store} socket={socket}>
+        <Provider store={store} sockets={this.sockets}>
           <MuiThemeProvider muiTheme={getMuiTheme()}>
             <main>
                 <header className={"wrapper-header"}>
