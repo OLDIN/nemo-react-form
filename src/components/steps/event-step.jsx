@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { reduxForm } from 'redux-form';
+
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
@@ -23,25 +24,20 @@ import IconSwimming from '../icons/swimming.svg';
 
 import { selectEvent } from '../../actions/events';
 
+const icons = {
+  IconDiving,
+  IconDay,
+  IconAquarium,
+  IconNight,
+  IconSwimming
+};
+
 class EventStep extends Component {
 
   constructor(props) {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
-
-    this.state = {
-
-      icons: {
-        IconDiving,
-        IconDay,
-        IconAquarium,
-        IconNight,
-        IconSwimming
-      }
-
-    };
-
   }
 
   handleClick(e) {
@@ -99,7 +95,7 @@ class EventStep extends Component {
                   id={e.id}
                 >
                   <div className={cellClasses} onClick={this.handleClick} data-id={e.id}>
-                    <img src={this.state.icons[e.events_global.onlinePaymentIcon]} alt={name}/>
+                    <img src={icons[e.events_global.onlinePaymentIcon]} alt={name}/>
                     <p>{name} - {e.price} грн.</p>
                   </div>
                 </Cell>
@@ -129,10 +125,6 @@ EventStep.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handlePrev: PropTypes.func.isRequired,
   events: PropTypes.array.isRequired
-};
-
-EventStep.contextTypes = {
-  store: PropTypes.object
 };
 
 const mapStateToProps = state => {

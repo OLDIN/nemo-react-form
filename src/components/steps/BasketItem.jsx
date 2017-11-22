@@ -11,15 +11,19 @@ import FontIcon from 'material-ui/FontIcon';
 import { ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 
+import { removeEvent } from '../../actions/basket';
+
+import {
+  getName,
+  isBetweenTwoSeats
+} from '../../services/helpers';
+
+import { addMsg } from '../../actions/notif';
 // Icons images
 import IconDay from '../icons/day.svg';
 import IconAquarium from '../icons/aquarium.svg';
 import IconNight from '../icons/night.svg';
 import IconSwimming from '../icons/swimming.svg';
-
-import { removeEvent } from '../../actions/basket';
-
-import { getName } from '../../services/helpers';
 
 const icons = {
   IconDay,
@@ -37,7 +41,7 @@ class BasketItem extends Component {
   }
 
   handleClick() {
-    const { event } = this.props;
+    const { event, basket } = this.props;
 
     const eventInfo = {
       id: event.id,
@@ -45,8 +49,10 @@ class BasketItem extends Component {
     };
 
     if (event.isArena) {
-      eventInfo.row = event.row;
-      eventInfo.seat = event.seat;
+      if (isBetweenTwoSeats(basket, event, event.id, true)) {
+        return this.props.dispatch(addMsg({ msg: 'Вы не можете отменить место между двумя купленными.', msgType: 'error' }));
+      }
+      eventInfo.dataId = event.dataId;
     }
 
     this.props.dispatch(removeEvent(eventInfo));
@@ -78,12 +84,12 @@ class BasketItem extends Component {
             }
             { event.isArena
               ? <span>
-                  Ряд:    <span style={{color: darkBlack}}>1</span>,
-                  Место: <span style={{color: darkBlack}}>10</span>,
+                  Ряд:    <span style={{color: darkBlack}}>{event.row}</span>,
+                  Место: <span style={{color: darkBlack}}>{event.seat}</span>,
                 </span>
               : ''
             }
-            Цена: <span style={{color: darkBlack}}>{event.price} грн.</span>
+            <span>Цена: <span style={{color: darkBlack}}>{event.price} грн.</span> </span>
           </p>
         }
         secondaryTextLines={2}

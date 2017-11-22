@@ -35,7 +35,7 @@ class ListStep extends Component {
 }
 
 ListStep.propTypes = {
-  handleSubmit: PropTypes.func
+  basket: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => {

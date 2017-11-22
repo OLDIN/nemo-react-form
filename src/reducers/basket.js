@@ -11,11 +11,8 @@ export default function basket(state = initialState, action) {
       return state.concat(action.event);
     case REMOVE_EVENT:
       return state.filter(e =>
-        (!action.event.isArena &&
-          e.id !== action.event.id) ||
-        (e.id !== action.event.id ||
-        e.row !== action.event.row ||
-        e.seat !== action.event.seat)
+        (!action.event.isArena && e.id !== action.event.id) ||
+        (e.dataId !== action.event.dataId )
       );
     default:
       return state;

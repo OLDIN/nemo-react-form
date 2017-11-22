@@ -1,43 +1,31 @@
 import React, { Component } from 'react';
-import Snackbar from 'material-ui/Snackbar';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
+import { hideMsg } from '../../actions/notif';
+
+import Snackbar from 'material-ui/Snackbar';
 
 class Notif extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: this.props.show || false
-    };
-  }
-
-  handleTouchTap = () => {
-    this.setState({
-      open: true
-    });
-  };
-
   handleActionTouchTap = () => {
-    this.setState({
-      open: false
-    });
-    alert('Event removed from your calendar.');
+    this.props.dispatch(hideMsg());
   };
 
   handleRequestClose = () => {
-    this.setState({
-      open: false
-    });
+    this.props.dispatch(hideMsg());
   };
 
   render() {
-    const { msg, duration } = this.props;
+    const { notif } = this.props;
+
     return (
       <Snackbar
-        open={this.state.open}
-        message={msg}
-        action="undo"
-        autoHideDuration={duration}
+        open={notif.show}
+        message={notif.msg}
+        className={`react-notif-${notif.msgType}`}
+        action="Закрыть"
+        autoHideDuration={4000}
         onActionTouchTap={this.handleActionTouchTap}
         onRequestClose={this.handleRequestClose}
       />
@@ -46,9 +34,17 @@ class Notif extends Component {
 }
 
 Notif.propTypes = {
-  msg: PropTypes.string.isRequired,
-  duration: PropTypes.number.isRequired,
-  show: PropTypes.bool
+  notif: PropTypes.shape({
+    msg: PropTypes.string,
+    msgType: PropTypes.string,
+    show: PropTypes.bool
+  }).isRequired
 };
 
-export default Notif;
+const mapStateToProps = state => {
+  return {
+    notif: state.notif
+  }
+};
+
+export default connect(mapStateToProps)(Notif);

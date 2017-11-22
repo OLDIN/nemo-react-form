@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -11,32 +12,41 @@ import Logo from './img/top-logo-hotel.svg';
 import MDSteppers from './mdsteppers';
 import configureStore from './configureStore.dev';
 
+import Notif from './components/Notif';
+
 import Sockets from './services/sockets';
 
 const initialState = window.REDUX_INITIAL_STATE || {};
 
 const store = configureStore(initialState);
 
-/*const showResults = values =>
+const showResults = values =>
   new Promise(resolve => {
     setTimeout(() => {
       // simulate server latency
-      window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`);
-      resolve()
+      console.log(`You submitted: `, values);
+      resolve();
     }, 500);
-  });*/
+  });
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     // стартуем соккеты
-    this.sockets = new Sockets(store);
+    const sockets = new Sockets(store);
+    this.sockets = sockets.getSockets();
+  }
+
+  getChildContext() {
+    return {
+      sockets: this.sockets
+    };
   }
 
   render() {
       return (
-        <Provider store={store} sockets={this.sockets}>
+        <Provider store={store}>
           <MuiThemeProvider muiTheme={getMuiTheme()}>
             <main>
                 <header className={"wrapper-header"}>
@@ -44,7 +54,8 @@ class App extends Component {
                   <h1>Покупка и бронирование билетов</h1>
                 </header>
               <section className={"content"}>
-                <MDSteppers />
+                <MDSteppers onSubmit={showResults} />
+                <Notif />
               </section>
             </main>
           </MuiThemeProvider>
@@ -52,5 +63,9 @@ class App extends Component {
       );
     }
 }
+
+App.childContextTypes = {
+  sockets: PropTypes.object
+};
 
 export default App;

@@ -1,6 +1,11 @@
 import io from 'socket.io-client';
 
-import { otherSelect, otherUnSelect } from '../actions/seats';
+import {
+  otherSelect,
+  otherUnSelect,
+  reservSeat,
+  soldSeat,
+} from '../actions/seats';
 
 class Sockets {
 
@@ -11,6 +16,10 @@ class Sockets {
       nemo: io(process.env.REACT_APP_SOCKET_NEMO, { forceNew: true })
     };
     this.eventListeners();
+  }
+
+  getSockets() {
+    return this.sockets;
   }
 
   eventListeners() {
@@ -37,10 +46,12 @@ class Sockets {
       const { eventId } = this.getState();
 
       if (!eventId) return;
-      if (eventId !== data.event_id) return;
+
       switch (data.event) {
-        case 'remote-select-place': this.remoteSelectSeat(data); break;
-        case 'remote-unselect-place': this.remoteUnSelectSeat(data); break;
+        case 'remote-select-place'     : this.remoteSelectSeat(data); break;
+        case 'remote-unselect-place'   : this.remoteUnSelectSeat(data); break;
+        case 'add-reserv-many-tickets' : this.buyManyTickets(data.tickets); break;
+        case 'set-places'              : this.setPlaces(data.places); break;
 
         default: console.log('hz event = ', data);
       }
@@ -59,6 +70,10 @@ class Sockets {
     /*
     * удалённый выбор места
     */
+    const { eventId } = this.getState();
+
+    if (eventId !== data.event_id) return;
+
     this.store.dispatch(otherSelect({
       dataId: data.data_id,
       socketId: data.socket_id
@@ -69,10 +84,62 @@ class Sockets {
     /*
      * удалённое снятие выбранного места
      */
+    const { eventId } = this.getState();
+
+    if (eventId !== data.event_id) return;
+
     this.store.dispatch(otherUnSelect({
       dataId: data.data_id,
       socketId: data.socket_id
     }));
+  }
+
+  buyManyTickets(tickets) {
+    /*
+    * подсвет купленного места
+    */
+    console.log('tickets = ', tickets);
+    tickets.forEach(t => {
+      t.ticket_events.forEach(te => {
+        if (te.event.events_global.group_id === 1 && te.zone === +process.env.REACT_APP_ROW_FOR_PAY) {
+          if (t.reserved) {
+
+            this.store.dispatch(reservSeat({
+              zone: te.zone,
+              row: te.row,
+              place: te.place
+            }));
+
+          } else {
+
+            this.store.dispatch(soldSeat({
+              zone: te.zone,
+              row: te.row,
+              place: te.place
+            }));
+
+          }
+
+        }
+      });
+    });
+  }
+
+  setPlaces(seats) {
+    /*
+    * установка статуса "выбрано другим кассиром" для мест на арене
+    */
+    const state = this.getState();
+
+    seats.forEach(seat => {
+      if (state.eventId === seat.event_id) {
+        // выставляем место как выбранное другим кассиром
+        this.store.dispatch(otherSelect({
+          dataId: seat.data_id,
+          socketId: seat.socket_id
+        }));
+      }
+    });
   }
 
 }

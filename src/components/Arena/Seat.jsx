@@ -10,7 +10,12 @@ import {
   removeEvent
 } from '../../actions/basket';
 
-// import Notif from '../Notif';
+import { clickSeat } from '../../actions/seats';
+import { addMsg } from '../../actions/notif';
+import {
+  isBetweenTwoSeats,
+  isNextSeatInArena
+} from '../../services/helpers';
 
 class Seat extends Component {
 
@@ -19,37 +24,34 @@ class Seat extends Component {
 
     this.handleClick = this.handleClick.bind(this);
 
-    this.state = {
-      selected: false,
-      reserved: false,
-      otherSelected: false,
-      sold: false
-    }
   }
 
   handleClick(e) {
-    const { reserved, otherSelected, sold } = this.state;
+    const { data } = this.props;
     // если какое-то из действий было выполнено с местом, то закрываем доступ к выделению
-    if (reserved || otherSelected || sold) {
-      return console.log("Место недоступно для покупки");
+    if (data.reserved || data.otherSelected || data.sold) {
+      return this.props.dispatch(addMsg({ msg: "Место недоступно для покупки", msgType: 'error' }));
     }
 
     if (!this.props.eventId) {
-      return console.log("Вы должны выбрать время мероприятияпочему ");
+      return this.props.dispatch(addMsg({ msg: "Вы должны выбрать время мероприятия", msgType: 'error' }));
     }
 
-    const { eventId, row, text, events } = this.props;
+    const { eventId, events, basket } = this.props;
 
-    this.setState({
-      selected: !this.state.selected
-    });
-
-    if (this.inBasket({ id: eventId, row, seat: text.number })) {
-
+    if (this.inBasket({ id: eventId, dataId: data.data.id })) {
+      // проверяем рядом ли это место с предыдущим выбранным
+      if (isBetweenTwoSeats(basket, data)) {
+        return this.props.dispatch(addMsg({ msg: 'Вы не можете отменить место между двумя купленными.', msgType: 'error' }));
+      }
+      // удаляем из корзины
       this.props.dispatch(removeEvent({
         id: eventId,
-        row,
-        seat: text.number
+        dataId: data.data.id
+      }));
+      // выставляем месту статус "выбран"
+      this.props.dispatch(clickSeat({
+        dataId: data.data.id
       }));
 
     } else {
@@ -57,19 +59,28 @@ class Seat extends Component {
       const event = find(events, { id: eventId });
 
       if (!event) {
-        return console.log('Мероприятие не было найден. Что-то пошло не так.');
+        return this.props.dispatch(addMsg({ msg: 'Мероприятие не было найден. Что-то пошло не так.', msgType: 'error' }));
       }
-
+      // проверяем рядом лми это место с предыдущим выбранным
+      if (!isNextSeatInArena(basket, data, eventId)) {
+        return this.props.dispatch(addMsg({ msg: 'Вы должны выбрать соседнее место', msgType: 'error' }));
+      }
+      // заносим в массив "корзина"
       this.props.dispatch(pushEvent({
         id: eventId,
-        row,
-        seat: text.number,
+        row: data.row,
+        seat: data.text.number,
+        dataId: data.data.id,
         dateStart: event.date_start,
         isArena: event.events_global.gevent_group.isArena,
         isNightShow: event.events_global.isNightShow,
         name: event.events_global.name,
         price: event.price,
         icon: event.events_global.onlinePaymentIcon
+      }));
+      // выставляем месту статус "выбран"
+      this.props.dispatch(clickSeat({
+        dataId: data.data.id
       }));
 
     }
@@ -80,24 +91,26 @@ class Seat extends Component {
     const { basket } = this.props;
 
     const foundEvent = basket.filter(e =>
-      e.id === event.id && e.row === event.row && e.seat === event.seat
+      e.id === event.id && e.dataId === event.dataId
     ).length;
 
     return foundEvent ? true : false;
   }
 
   render() {
-    const { data } = this.props;
+    const { data, key } = this.props;
+
+    const inBasket = this.inBasket({ id: this.props.eventId, dataId: data.data.id });
 
     const gClasses = classNames({
-      'selected'       : this.state.selected,
-      'reserved'       : this.state.reserved,
+      'selected'       : data.selected || inBasket,
+      'reserved'       : data.reserved,
       'other-selected' : data.otherSelected,
-      'sold'           : this.state.sold
+      'sold'           : data.sold
     });
 
     return (
-      <g onClick={this.handleClick} className={gClasses}>
+      <g onClick={this.handleClick} className={gClasses} key={key}>
         <path className={data.path.className} d={data.path.d}></path>
         <text className={data.text.className} transform={data.text.transform} >{data.text.number}</text>
       </g>

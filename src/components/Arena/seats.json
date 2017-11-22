@@ -12,7 +12,12 @@
     "row": 1,
     "data": {
       "id": 2121
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -27,7 +32,12 @@
     "row": 1,
     "data": {
       "id": 2120
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -42,7 +52,12 @@
     "row": 1,
     "data": {
       "id": 2119
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -57,7 +72,12 @@
     "row": 1,
     "data": {
       "id": 2118
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -72,7 +92,12 @@
     "row": 1,
     "data": {
       "id": 2117
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -87,7 +112,12 @@
     "row": 1,
     "data": {
       "id": 2116
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -102,7 +132,12 @@
     "row": 1,
     "data": {
       "id": 2114
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -117,7 +152,12 @@
     "row": 1,
     "data": {
       "id": 2113
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -132,7 +172,12 @@
     "row": 1,
     "data": {
       "id": 2112
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -147,7 +192,12 @@
     "row": 1,
     "data": {
       "id": 2111
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -162,7 +212,12 @@
     "row": 1,
     "data": {
       "id": 2110
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -177,7 +232,12 @@
     "row": 1,
     "data": {
       "id": 214
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -192,7 +252,12 @@
     "row": 1,
     "data": {
       "id": 211
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -207,7 +272,12 @@
     "row": 1,
     "data": {
       "id": 212
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -222,7 +292,12 @@
     "row": 1,
     "data": {
       "id": 213
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -237,7 +312,12 @@
     "row": 1,
     "data": {
       "id": 215
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -252,7 +332,12 @@
     "row": 1,
     "data": {
       "id": 216
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -267,7 +352,12 @@
     "row": 1,
     "data": {
       "id": 217
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -282,7 +372,12 @@
     "row": 1,
     "data": {
       "id": 218
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -297,7 +392,12 @@
     "row": 1,
     "data": {
       "id": 219
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -312,7 +412,12 @@
     "row": 1,
     "data": {
       "id": 2115
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -327,7 +432,12 @@
     "row": 2,
     "data": {
       "id": 2223
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -342,7 +452,12 @@
     "row": 2,
     "data": {
       "id": 2222
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -357,7 +472,12 @@
     "row": 2,
     "data": {
       "id": 221
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -372,7 +492,12 @@
     "row": 2,
     "data": {
       "id": 222
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -387,7 +512,12 @@
     "row": 2,
     "data": {
       "id": 223
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -402,7 +532,12 @@
     "row": 2,
     "data": {
       "id": 224
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -417,7 +552,12 @@
     "row": 2,
     "data": {
       "id": 225
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -432,7 +572,12 @@
     "row": 2,
     "data": {
       "id": 226
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -447,7 +592,12 @@
     "row": 2,
     "data": {
       "id": 227
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -462,7 +612,12 @@
     "row": 2,
     "data": {
       "id": 228
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -477,7 +632,12 @@
     "row": 2,
     "data": {
       "id": 229
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -492,7 +652,12 @@
     "row": 2,
     "data": {
       "id": 2210
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -507,7 +672,12 @@
     "row": 2,
     "data": {
       "id": 2211
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -522,7 +692,12 @@
     "row": 2,
     "data": {
       "id": 2212
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -537,7 +712,12 @@
     "row": 2,
     "data": {
       "id": 2213
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -552,7 +732,12 @@
     "row": 2,
     "data": {
       "id": 2214
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -567,7 +752,12 @@
     "row": 2,
     "data": {
       "id": 2215
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -582,7 +772,12 @@
     "row": 2,
     "data": {
       "id": 2216
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -597,7 +792,12 @@
     "row": 2,
     "data": {
       "id": 2217
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -612,7 +812,12 @@
     "row": 2,
     "data": {
       "id": 2218
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -627,7 +832,12 @@
     "row": 2,
     "data": {
       "id": 2219
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -642,7 +852,12 @@
     "row": 2,
     "data": {
       "id": 2220
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -657,7 +872,12 @@
     "row": 2,
     "data": {
       "id": 2221
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -672,7 +892,12 @@
     "row": 3,
     "data": {
       "id": 2326
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -687,7 +912,12 @@
     "row": 3,
     "data": {
       "id": 2325
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -702,7 +932,12 @@
     "row": 3,
     "data": {
       "id": 2324
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -717,7 +952,12 @@
     "row": 3,
     "data": {
       "id": 231
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -732,7 +972,12 @@
     "row": 3,
     "data": {
       "id": 232
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -747,7 +992,12 @@
     "row": 3,
     "data": {
       "id": 233
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -762,7 +1012,12 @@
     "row": 3,
     "data": {
       "id": 234
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -777,7 +1032,12 @@
     "row": 3,
     "data": {
       "id": 235
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -792,7 +1052,12 @@
     "row": 3,
     "data": {
       "id": 236
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -807,7 +1072,12 @@
     "row": 3,
     "data": {
       "id": 237
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -822,7 +1092,12 @@
     "row": 3,
     "data": {
       "id": 238
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -837,7 +1112,12 @@
     "row": 3,
     "data": {
       "id": 239
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -852,7 +1132,12 @@
     "row": 3,
     "data": {
       "id": 2310
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -867,7 +1152,12 @@
     "row": 3,
     "data": {
       "id": 2311
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -882,7 +1172,12 @@
     "row": 3,
     "data": {
       "id": 2312
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -897,7 +1192,12 @@
     "row": 3,
     "data": {
       "id": 2313
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -912,7 +1212,12 @@
     "row": 3,
     "data": {
       "id": 2314
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -927,7 +1232,12 @@
     "row": 3,
     "data": {
       "id": 2315
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -942,7 +1252,12 @@
     "row": 3,
     "data": {
       "id": 2316
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -957,7 +1272,12 @@
     "row": 3,
     "data": {
       "id": 2317
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -972,7 +1292,12 @@
     "row": 3,
     "data": {
       "id": 2318
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -987,7 +1312,12 @@
     "row": 3,
     "data": {
       "id": 2319
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1002,7 +1332,12 @@
     "row": 3,
     "data": {
       "id": 2320
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1017,7 +1352,12 @@
     "row": 3,
     "data": {
       "id": 2321
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1032,7 +1372,12 @@
     "row": 3,
     "data": {
       "id": 2322
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1047,7 +1392,12 @@
     "row": 3,
     "data": {
       "id": 2323
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1062,7 +1412,12 @@
     "row": 4,
     "data": {
       "id": 2425
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1077,7 +1432,12 @@
     "row": 4,
     "data": {
       "id": 2424
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1092,7 +1452,12 @@
     "row": 4,
     "data": {
       "id": 241
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1107,7 +1472,12 @@
     "row": 4,
     "data": {
       "id": 242
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1122,7 +1492,12 @@
     "row": 4,
     "data": {
       "id": 243
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1137,7 +1512,12 @@
     "row": 4,
     "data": {
       "id": 244
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1152,7 +1532,12 @@
     "row": 4,
     "data": {
       "id": 245
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1167,7 +1552,12 @@
     "row": 4,
     "data": {
       "id": 246
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1182,7 +1572,12 @@
     "row": 4,
     "data": {
       "id": 247
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1197,7 +1592,12 @@
     "row": 4,
     "data": {
       "id": 248
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1212,7 +1612,12 @@
     "row": 4,
     "data": {
       "id": 249
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1227,7 +1632,12 @@
     "row": 4,
     "data": {
       "id": 2410
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1242,7 +1652,12 @@
     "row": 4,
     "data": {
       "id": 2411
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1257,7 +1672,12 @@
     "row": 4,
     "data": {
       "id": 2412
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1272,7 +1692,12 @@
     "row": 4,
     "data": {
       "id": 2413
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1287,7 +1712,12 @@
     "row": 4,
     "data": {
       "id": 2414
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1302,7 +1732,12 @@
     "row": 4,
     "data": {
       "id": 2415
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1317,7 +1752,12 @@
     "row": 4,
     "data": {
       "id": 2416
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1332,7 +1772,12 @@
     "row": 4,
     "data": {
       "id": 2417
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1347,7 +1792,12 @@
     "row": 4,
     "data": {
       "id": 2418
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1362,7 +1812,12 @@
     "row": 4,
     "data": {
       "id": 2419
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1377,7 +1832,12 @@
     "row": 4,
     "data": {
       "id": 2420
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1392,7 +1852,12 @@
     "row": 4,
     "data": {
       "id": 2421
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1407,7 +1872,12 @@
     "row": 4,
     "data": {
       "id": 2422
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1422,7 +1892,12 @@
     "row": 4,
     "data": {
       "id": 2423
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1437,7 +1912,12 @@
     "row": 4,
     "data": {
       "id": 2426
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1452,7 +1932,12 @@
     "row": 4,
     "data": {
       "id": 2427
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1467,7 +1952,12 @@
     "row": 4,
     "data": {
       "id": 2428
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1482,7 +1972,12 @@
     "row": 5,
     "data": {
       "id": 251
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1497,7 +1992,12 @@
     "row": 5,
     "data": {
       "id": 252
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1512,7 +2012,12 @@
     "row": 5,
     "data": {
       "id": 253
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1527,7 +2032,12 @@
     "row": 5,
     "data": {
       "id": 254
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1542,7 +2052,12 @@
     "row": 5,
     "data": {
       "id": 255
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1557,7 +2072,12 @@
     "row": 5,
     "data": {
       "id": 256
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1572,7 +2092,12 @@
     "row": 5,
     "data": {
       "id": 257
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1587,7 +2112,12 @@
     "row": 5,
     "data": {
       "id": 258
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1602,7 +2132,12 @@
     "row": 5,
     "data": {
       "id": 259
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1617,7 +2152,12 @@
     "row": 5,
     "data": {
       "id": 2510
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1632,7 +2172,12 @@
     "row": 5,
     "data": {
       "id": 2511
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1647,7 +2192,12 @@
     "row": 5,
     "data": {
       "id": 2512
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1662,7 +2212,12 @@
     "row": 5,
     "data": {
       "id": 2513
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1677,7 +2232,12 @@
     "row": 5,
     "data": {
       "id": 2514
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1692,7 +2252,12 @@
     "row": 5,
     "data": {
       "id": 2515
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1707,7 +2272,12 @@
     "row": 5,
     "data": {
       "id": 2516
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1722,7 +2292,12 @@
     "row": 5,
     "data": {
       "id": 2517
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1737,7 +2312,12 @@
     "row": 5,
     "data": {
       "id": 2518
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1752,7 +2332,12 @@
     "row": 5,
     "data": {
       "id": 2519
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1767,7 +2352,12 @@
     "row": 5,
     "data": {
       "id": 2520
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1782,7 +2372,12 @@
     "row": 5,
     "data": {
       "id": 2521
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1797,7 +2392,12 @@
     "row": 5,
     "data": {
       "id": 2522
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1812,7 +2412,12 @@
     "row": 5,
     "data": {
       "id": 2523
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1827,7 +2432,12 @@
     "row": 5,
     "data": {
       "id": 2524
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1842,7 +2452,12 @@
     "row": 5,
     "data": {
       "id": 2525
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   },
   {
     "path": {
@@ -1857,6 +2472,11 @@
     "row": 5,
     "data": {
       "id": 2526
-    }
+    },
+    "otherSelected": false,
+    "selected": false,
+    "sold": false,
+    "reserved": false,
+    "socketId": null
   }
 ]

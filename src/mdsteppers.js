@@ -15,13 +15,19 @@ import FlatButton from 'material-ui/FlatButton';
 import Badge from 'material-ui/Badge';
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
 
-import DataStep   from './components/steps/date-step'  ;
-import EventStep  from './components/steps/event-step' ;
-import ArenaStep  from './components/steps/arena-step' ;
-import ListStep   from './components/steps/list-step'  ;
-import BuyStep    from './components/steps/buy-step'   ;
+import DataStep   from './components/steps/date-step';
+import EventStep  from './components/steps/event-step';
+import ArenaStep  from './components/steps/arena-step';
+import ListStep   from './components/steps/list-step';
+import BuyStep    from './components/steps/buy-step';
 
 import { pushEvent } from './actions/basket';
+
+import { reduxForm } from 'redux-form';
+import validate from './components/validate';
+
+import { createTicket } from './services/api/ticket';
+import { addMsg } from './actions/notif';
 
 /**
  * A basic vertical non-linear implementation
@@ -34,6 +40,7 @@ class MDSteppers extends Component {
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.changeStep = this.changeStep.bind(this);
+    this.handleCreateTicket = this.handleCreateTicket.bind(this);
 
     this.state = {
       stepIndex: 0,
@@ -129,12 +136,72 @@ class MDSteppers extends Component {
     );
   }
 
+  goToPay(data, signature) {
+
+    const form = document.createElement('form');
+    const inputData = document.createElement('input');
+    const inputSignature = document.createElement('input');
+    const buttonSubmit = document.createElement('button');
+
+    form.method = 'POST';
+    form.action = 'https://www.liqpay.ua/api/3/checkout';
+    form.target = '_top';
+    form.id = 'formPayment';
+
+    inputData.type = 'hidden';
+    inputData.name = 'data';
+    inputData.value = data;
+
+    inputSignature.type = 'hidden';
+    inputSignature.name = 'signature';
+    inputSignature.value = signature;
+
+    buttonSubmit.style = 'display: none';
+
+    form.appendChild(inputData);
+    form.appendChild(inputSignature);
+    form.appendChild(buttonSubmit);
+
+    const oldForm = document.getElementById('formPayment');
+
+    if (oldForm) {
+      document.body.removeChild(oldForm);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+
+  }
+
   isSelectedArena() {
     const event = find(this.props.events, e => {
       return e.selected && e.events_global.gevent_group.isArena;
     });
 
     return event ? true : false;
+  }
+
+  handleCreateTicket(values) {
+    const { basket } = this.props;
+    const totalPrice = basket.reduce((prev, cur) => prev += cur.price, 0);
+
+    if (totalPrice <= 0) {
+      return this.props.dispatch(addMsg({ msg: 'Нужно выбрать хоть одно мероприятие.', msgType: 'error' }));
+    }
+
+    return createTicket(values, basket)
+    .then(data => {
+      if (data.error) {
+        return this.props.dispatch(addMsg({ msg: data.msg, msgType: 'error' }));
+      }
+      // отправляем пользователя оплачивать билеты
+      this.goToPay(data.info.data, data.info.signature);
+      console.log('data after create ticket = ', data);
+    })
+    .catch(err => {
+      console.log('create ticket error = ', err);
+    });
+
   }
 
   render() {
@@ -198,7 +265,7 @@ class MDSteppers extends Component {
               Оформить заказ:
             </StepButton>
             <StepContent>
-              <BuyStep onSubmit={this.handleNext} handlePrev={this.handlePrev}  />
+              <BuyStep onSubmit={this.handleCreateTicket} handlePrev={this.handlePrev}  />
             </StepContent>
           </Step>
         </Stepper>
@@ -218,5 +285,12 @@ const mapStateToProps = state => {
     basket: state.basket
   };
 }
+
+MDSteppers = reduxForm({
+  form: 'stepper', // <------ same form name
+  destroyOnUnmount: false, // <------ preserve form data
+  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
+  validate
+})(MDSteppers);
 
 export default connect(mapStateToProps)(MDSteppers);
