@@ -1,0 +1,9 @@
+.react-notif-error > div {
+  background-color: rgba(255, 123, 114, 0.79) !important; }
+  .react-notif-error > div button {
+    color: red !important; }
+
+.react-notif-success > div {
+  background-color: #66cf92 !important; }
+  .react-notif-success > div button {
+    color: red !important; }
