@@ -54,6 +54,9 @@ class Seat extends Component {
         dataId: data.data.id
       }));
 
+      this.context.sockets.api.emit('online-pay', { event: 'remote-unselect-place', data_id: data.data.id, event_id: eventId });
+      this.context.sockets.nemo.emit('online-pay', { event: 'remote-unselect-place', data_id: data.data.id, event_id: eventId });
+
     } else {
 
       const event = find(events, { id: eventId });
@@ -82,6 +85,10 @@ class Seat extends Component {
       this.props.dispatch(clickSeat({
         dataId: data.data.id
       }));
+
+      this.context.sockets.api.emit('online-pay', { event: 'remote-select-place', data_id: data.data.id, event_id: eventId });
+      this.context.sockets.nemo.emit('online-pay', { event: 'remote-select-place', data_id: data.data.id, event_id: eventId });
+
 
     }
 
@@ -124,6 +131,10 @@ Seat.propTypes = {
   eventId: PropTypes.number,
   events: PropTypes.array.isRequired,
   basket: PropTypes.array.isRequired
+};
+
+Seat.contextTypes = {
+  sockets: PropTypes.object.isRequired
 };
 
 // Decorate with connect to read form values

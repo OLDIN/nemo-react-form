@@ -27,10 +27,13 @@ class ArenaStep extends Component {
   componentWillUpdate(nextProps) {
     const { eventId } = nextProps;
     const { sockets } = this.context;
-    // запрос на получение выбранных мест другими кассирами
-    sockets.nemo.emit('cashier', { event: 'get-places' });
     // подгрузка списка занятых мест
-    getArenaEvents(this.props.dispatch, eventId);
+    getArenaEvents(this.props.dispatch, eventId)
+    .then(() => {
+      // запрос на получение выбранных мест другими кассирами
+      sockets.nemo.emit('cashier', { event: 'get-places' });
+      sockets.api.emit('online-pay', { event: 'get-places' });
+    })
   }
 
   getEvents() {

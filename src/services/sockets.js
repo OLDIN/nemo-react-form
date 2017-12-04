@@ -40,6 +40,25 @@ class Sockets {
       console.warn('Соединение с сервером пропало. Купленные места на арене могут отображаться некорректно');
     });
 
+    this.sockets.api.on('cashier', data => {
+      console.log('api:socket info = ', data);
+      // проверка выбрано ли мероприятие арена, выбрано ли место
+      const { eventId } = this.getState();
+      console.log('eventid = ', eventId);
+      if (!eventId) return;
+
+      switch (data.event) {
+        case 'ticket-reserved'         : this.ticketReserved(data.tickets); break;
+        case 'get-places'              : this.getPlaces(); break;
+        case 'set-places'              : this.setPlaces(data.seats); break;
+        case 'remote-select-place'     : this.remoteSelectSeat(data); break;
+        case 'remote-unselect-place'   : this.remoteUnSelectSeat(data); break;
+        case 'ticket-sold'             : this.ticketSold(data); break;
+
+        default: console.log('hz event = ', data);
+      }
+    });
+
     this.sockets.nemo.on('cashier', data => {
       console.log('nemo:socket info = ', data);
       // проверка выбрано ли мероприятие арена, выбрано ли место
@@ -56,13 +75,56 @@ class Sockets {
         default: console.log('hz event = ', data);
       }
     });
+
+  }
+
+  ticketSold(data) {
+    const { eventId } = this.getState();
+    console.log(data);
+    data.tickets.forEach(ticket => {
+      if (eventId === ticket.event.id) {
+        this.store.dispatch(soldSeat({
+          zone: ticket.zone,
+          row: ticket.row,
+          place: ticket.place
+        }));
+      }
+    })
+  }
+
+  getPlaces() {
+    const { basket } = this.getState();
+    const seats = basket
+      .filter(item => item.isArena)
+      .map(seat => {
+        return { data_id: seat.dataId, event_id: seat.id };
+      })
+    this.sockets.api.emit('online-pay', { event: 'set-places', seats });
+  }
+
+  ticketReserved(tickets) {
+    const { eventId } = this.getState();
+
+    if (!eventId) return;
+
+    tickets.forEach(ticket => {
+      if (eventId === ticket.event.id) {
+        console.log('event == event');
+        this.store.dispatch(reservSeat({
+          zone: ticket.zone,
+          row: ticket.row,
+          place: ticket.place
+        }));
+      }
+    });
   }
 
   getState() {
     const state = this.store.getState();
     // console.log('state = ', state);
     return {
-      eventId: state.form.stepper.values ? state.form.stepper.values.time : null
+      eventId: state.form.stepper.values ? state.form.stepper.values.time : null,
+      basket: state.basket
     };
   }
 
@@ -98,7 +160,6 @@ class Sockets {
     /*
     * подсвет купленного места
     */
-    console.log('tickets = ', tickets);
     tickets.forEach(t => {
       t.ticket_events.forEach(te => {
         if (te.event.events_global.group_id === 1 && te.zone === +process.env.REACT_APP_ROW_FOR_PAY) {
@@ -129,10 +190,10 @@ class Sockets {
     /*
     * установка статуса "выбрано другим кассиром" для мест на арене
     */
-    const state = this.getState();
+    const { eventId } = this.getState();
 
     seats.forEach(seat => {
-      if (state.eventId === seat.event_id) {
+      if (eventId === seat.event_id) {
         // выставляем место как выбранное другим кассиром
         this.store.dispatch(otherSelect({
           dataId: seat.data_id,
