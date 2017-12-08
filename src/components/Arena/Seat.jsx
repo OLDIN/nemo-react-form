@@ -38,6 +38,8 @@ class Seat extends Component {
     }
 
     const { eventId, events, basket } = this.props;
+    const seatsLength = basket.filter(item => item.isArena).length;
+    console.log('seatsLength = ', seatsLength);
 
     if (this.inBasket({ id: eventId, dataId: data.data.id })) {
       // проверяем рядом ли это место с предыдущим выбранным
@@ -49,7 +51,7 @@ class Seat extends Component {
         id: eventId,
         dataId: data.data.id
       }));
-      // выставляем месту статус "выбран"
+      // выставляем месту статус "не выбран"
       this.props.dispatch(clickSeat({
         dataId: data.data.id
       }));
@@ -67,6 +69,10 @@ class Seat extends Component {
       // проверяем рядом лми это место с предыдущим выбранным
       if (!isNextSeatInArena(basket, data, eventId)) {
         return this.props.dispatch(addMsg({ msg: 'Вы должны выбрать соседнее место', msgType: 'error' }));
+      }
+      // проверяем на максимальное количество выбранных мест
+      if (seatsLength >= process.env.REACT_APP_MAX_SEATS_LENGTH) {
+        return this.props.dispatch(addMsg({ msg: `Максимальное количество выбранных мест = ${process.env.REACT_APP_MAX_SEATS_LENGTH}`, msgType: 'error' }));
       }
       // заносим в массив "корзина"
       this.props.dispatch(pushEvent({

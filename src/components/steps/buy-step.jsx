@@ -48,7 +48,18 @@ class BuyStep extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, formValues } = this.props;
+    let buttonPayText;
+
+    if (typeof formValues.isReserv === 'undefined') {
+      formValues.isReserv = false;
+    }
+
+    if (!formValues.isReserv) {
+      buttonPayText = `Оплатить ${this.calcPriceTicket()} грн.`;
+    } else {
+      buttonPayText = 'Зарезервировать';
+    }
 
     return (
       <form onSubmit={handleSubmit} className={"first-page"}>
@@ -72,7 +83,7 @@ class BuyStep extends Component {
         </div>
 
         <RaisedButton
-          label={`Оплатить ${this.calcPriceTicket()} грн.`}
+          label={buttonPayText}
           disableFocusRipple={true}
           primary={true}
           onClick={handleSubmit}
@@ -85,12 +96,14 @@ class BuyStep extends Component {
 };
 
 BuyStep.propTypes = {
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  formValues: PropTypes.object
 };
 
 const mapStateToProps = state => {
   return {
-    basket: state.basket
+    basket: state.basket,
+    formValues: state.form.stepper.values
   };
 };
 

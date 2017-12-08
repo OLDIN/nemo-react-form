@@ -13,8 +13,12 @@ class Sockets {
     this.store = store;
     this.sockets = {
       api: io(process.env.REACT_APP_SOCKET_API, { forceNew: true }),
-      nemo: io(process.env.REACT_APP_SOCKET_NEMO, { forceNew: true })
+      nemo: io(process.env.REACT_APP_SOCKET_NEMO, {
+        forceNew: true,
+        query: { online: true }
+      })
     };
+    console.log(process.env);
     this.eventListeners();
   }
 
@@ -64,13 +68,18 @@ class Sockets {
       // проверка выбрано ли мероприятие арена, выбрано ли место
       const { eventId } = this.getState();
 
-      if (!eventId) return;
+      if (!eventId || data.isOnlinePay) return;
 
       switch (data.event) {
         case 'remote-select-place'     : this.remoteSelectSeat(data); break;
         case 'remote-unselect-place'   : this.remoteUnSelectSeat(data); break;
         case 'add-reserv-many-tickets' : this.buyManyTickets(data.tickets); break;
-        case 'set-places'              : this.setPlaces(data.places); break;
+        case 'set-places'              :
+          if (!data.places || !data.places.length) {
+            break;
+          }
+          this.setPlaces(data.places); break;
+        case 'get-places'              : this.getPlaces(); break;
 
         default: console.log('hz event = ', data);
       }

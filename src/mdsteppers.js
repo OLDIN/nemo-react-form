@@ -21,7 +21,10 @@ import ArenaStep  from './components/steps/arena-step';
 import ListStep   from './components/steps/list-step';
 import BuyStep    from './components/steps/buy-step';
 
-import { pushEvent } from './actions/basket';
+import {
+  pushEvent,
+  removeEvents
+} from './actions/basket';
 
 import { reduxForm } from 'redux-form';
 import validate from './components/validate';
@@ -189,17 +192,26 @@ class MDSteppers extends Component {
       return this.props.dispatch(addMsg({ msg: 'Нужно выбрать хоть одно мероприятие.', msgType: 'error' }));
     }
 
+    if (typeof values.isReserv === 'undefined') {
+      values.isReserv = false;
+    }
+
     return createTicket(values, basket)
     .then(data => {
+
       if (data.error) {
         return this.props.dispatch(addMsg({ msg: data.msg, msgType: 'error' }));
       }
-      // отправляем пользователя оплачивать билеты
-      this.goToPay(data.info.data, data.info.signature);
-      console.log('data after create ticket = ', data);
+
+      if (!values.isReserv) {
+        // отправляем пользователя оплачивать билеты
+        return this.goToPay(data.info.data, data.info.signature);
+      }
+      this.props.dispatch(removeEvents());
+      return this.props.dispatch(addMsg({ msg: 'Вы успешно зарезервировали билет.', msgType: 'success' }));
     })
     .catch(err => {
-      console.log('create ticket error = ', err);
+      return this.props.dispatch(addMsg({ msg: err, msgType: 'error' }));
     });
 
   }

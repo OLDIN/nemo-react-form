@@ -8,6 +8,7 @@ import seatsList from './seats.json';
 import Seat from './Seat';
 
 import { setSeats } from '../../actions/seats';
+import { getArenaEvents } from '../../services/api/events';
 
 class Arena extends Component {
 
@@ -15,6 +16,21 @@ class Arena extends Component {
     super(props);
 
     this.props.dispatch(setSeats(seatsList));
+  }
+
+  componentDidMount() {
+    const eventId = this.props.eventId;
+    const { sockets } = this.context;
+
+    if (!eventId) return;
+    console.log('componentDidMount Arena');
+    // подгрузка списка занятых мест
+    getArenaEvents(this.props.dispatch, eventId)
+    .then(() => {
+      // запрос на получение выбранных мест другими кассирами
+      sockets.nemo.emit('cashier', { event: 'get-places' });
+      sockets.api.emit('online-pay', { event: 'get-places' });
+    })
   }
 
   render(){
@@ -74,12 +90,19 @@ class Arena extends Component {
 }
 
 Arena.propTypes = {
-  seats: PropTypes.array.isRequired
+  seats: PropTypes.array.isRequired,
+  eventId: PropTypes.number
+};
+
+Arena.contextTypes = {
+  sockets: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
+  console.log('state = ', state);
   return {
-    seats: state.seats
+    seats: state.seats,
+    eventId: state.form.stepper.values.time
   };
 }
 

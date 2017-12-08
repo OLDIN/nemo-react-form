@@ -22,6 +22,11 @@ export function createTicket(values, basket) {
       resolve(data);
     })
     .catch(err => {
+      if (err.response.data) {
+        if (err.response.data.msg) {
+          return reject((err.response.data.msg).toString());
+        }
+      }
       reject(err);
     })
 
