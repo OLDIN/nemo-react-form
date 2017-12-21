@@ -28,7 +28,7 @@ export default function events (state = initialState, action) {
 
     case OTHER_SELECT:
       return state.map(seat => {
-        if (seat.data.id === action.dataId) {
+        if (seat.data.id === action.dataId && !seat.selected) {
           return Object.assign({}, seat, {
             otherSelected: true,
             //socketId: action.socketId
