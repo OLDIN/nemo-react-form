@@ -68,7 +68,7 @@ choosePort(HOST, DEFAULT_PORT)
     // Launch WebpackDevServer.
     devServer.listen(port, HOST, err => {
       if (err) {
-        return console.log(err);
+        return console.error(err);
       }
       if (isInteractive) {
         clearConsole();

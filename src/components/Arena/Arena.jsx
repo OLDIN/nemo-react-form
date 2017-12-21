@@ -23,7 +23,7 @@ class Arena extends Component {
     const { sockets } = this.context;
 
     if (!eventId) return;
-    console.log('componentDidMount Arena');
+
     // подгрузка списка занятых мест
     getArenaEvents(this.props.dispatch, eventId)
     .then(() => {

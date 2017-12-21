@@ -18,7 +18,6 @@ class Sockets {
         query: { online: true }
       })
     };
-    console.log(process.env);
     this.eventListeners();
   }
 
@@ -48,7 +47,6 @@ class Sockets {
       console.log('api:socket info = ', data);
       // проверка выбрано ли мероприятие арена, выбрано ли место
       const { eventId } = this.getState();
-      console.log('eventid = ', eventId);
       if (!eventId) return;
 
       switch (data.event) {
@@ -89,7 +87,6 @@ class Sockets {
 
   ticketSold(data) {
     const { eventId } = this.getState();
-    console.log(data);
     data.tickets.forEach(ticket => {
       if (eventId === ticket.event.id) {
         this.store.dispatch(soldSeat({
@@ -118,7 +115,6 @@ class Sockets {
 
     tickets.forEach(ticket => {
       if (eventId === ticket.event.id) {
-        console.log('event == event');
         this.store.dispatch(reservSeat({
           zone: ticket.zone,
           row: ticket.row,

@@ -39,7 +39,6 @@ class Seat extends Component {
 
     const { eventId, events, basket } = this.props;
     const seatsLength = basket.filter(item => item.isArena).length;
-    console.log('seatsLength = ', seatsLength);
 
     if (this.inBasket({ id: eventId, dataId: data.data.id })) {
       // проверяем рядом ли это место с предыдущим выбранным

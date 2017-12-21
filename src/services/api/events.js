@@ -22,7 +22,7 @@ export const getArenaEvents = (dispatch, eventId) => {
   .then(data => {
     if (data.error) {
       //FIXME: заменить это на нормальный notif
-      return console.log(data.msg);
+      return console.error(data.msg);
     }
     // убираем всю подсветку с мест
     dispatch(removeAllStatusSeats());
@@ -48,7 +48,6 @@ export const getArenaEvents = (dispatch, eventId) => {
       }
 
     });
-    console.log('arenaEvents = ', data.arenaEvents);
   });
 };
 

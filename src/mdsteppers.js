@@ -60,7 +60,7 @@ class MDSteppers extends Component {
       const event = find(events, { selected: true });
 
       if (!event) {
-        return console.log('Мероприятие не было найдено. Попробуйте позже');
+        return console.error('Мероприятие не было найдено. Попробуйте позже');
       }
       // заносим мероприятие в корзину
       this.props.dispatch(pushEvent({

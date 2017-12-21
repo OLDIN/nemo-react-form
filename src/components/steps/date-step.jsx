@@ -33,7 +33,7 @@ class DateStep extends Component {
       this.props.dispatch(setEvents(data.events));
     })
     .catch(err => {
-      console.log('err = ', err);
+      console.error('err = ', err);
     });
 
   }
