@@ -52,7 +52,10 @@ class EventStep extends Component {
         return prev;
       }
 
-      const event = find(prev, e => e.events_global.isNightShow === cur.events_global.isNightShow);
+      const event = prev.some(e =>
+        e.events_global.isNightShow === cur.events_global.isNightShow &&
+        e.events_global.gevent_group.isArena === cur.events_global.gevent_group.isArena
+      );
 
       if (!event) {
         prev.push(cur);

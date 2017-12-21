@@ -108,7 +108,7 @@ class Sockets {
       .map(seat => {
         return { data_id: seat.dataId, event_id: seat.id };
       })
-    this.sockets.api.emit('online-pay', { event: 'set-places', seats });
+    this.sockets.api.emit('online-pay', { event: 'set-places', places: seats });
   }
 
   ticketReserved(tickets) {
