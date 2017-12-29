@@ -6,8 +6,6 @@ import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-import { find } from 'lodash';
-
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
