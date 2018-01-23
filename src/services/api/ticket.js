@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { searchToObject } from '../helpers';
 
 export function createTicket(values, basket) {
   /*
@@ -10,12 +11,19 @@ export function createTicket(values, basket) {
       values.isReserv = false;
     }
 
-    return axios.post(`${process.env.REACT_APP_API_LINK}/ticket/create-reserv`, {
-      phone: values.phone,
-      note: values.fullName,
-      email: values.email,
-      events: basket,
-      isReserv: values.isReserv
+    const query = searchToObject();
+
+    return axios({
+      method: 'post',
+      url: `${process.env.REACT_APP_API_LINK}/ticket/create-reserv`,
+      data: {
+        phone: values.phone,
+        note: values.fullName,
+        email: values.email,
+        events: basket,
+        isReserv: values.isReserv
+      },
+      params: query
     })
     .then(res => res.data)
     .then(data => {
