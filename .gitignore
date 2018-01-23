@@ -24,11 +24,6 @@ yarn-error.log*
 .env
 .env.*
 
-#Build generated
-dist/
-#build/
-
-
 ### SublimeText ###
 # cache files for sublime text
 *.tmlanguage.cache
