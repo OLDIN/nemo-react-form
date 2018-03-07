@@ -208,7 +208,10 @@ class MDSteppers extends Component {
         return this.goToPay(data.info.data, data.info.signature);
       }
       this.props.dispatch(removeEvents());
-      return this.props.dispatch(addMsg({ msg: 'Вы успешно зарезервировали билет.', msgType: 'success' }));
+      return this.props.dispatch(addMsg({ msg: `
+        Вы успешно зарезервировали билет. 
+        ВНИМАНИЕ!!! Письмо может попасть в папку спам
+      `, msgType: 'success' }));
     })
     .catch(err => {
       return this.props.dispatch(addMsg({ msg: err, msgType: 'error' }));
