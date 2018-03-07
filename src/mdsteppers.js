@@ -209,8 +209,7 @@ class MDSteppers extends Component {
       }
       this.props.dispatch(removeEvents());
       return this.props.dispatch(addMsg({ msg: `
-        Вы успешно зарезервировали билет. 
-        ВНИМАНИЕ!!! Письмо может попасть в папку спам
+        Вы успешно зарезервировали билет. Письмо может попасть в спам
       `, msgType: 'success' }));
     })
     .catch(err => {
